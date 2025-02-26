@@ -1,3 +1,10 @@
+<%
+    HttpSession sessionObj = request.getSession(false);
+    if (sessionObj == null || sessionObj.getAttribute("user") == null) {
+        response.sendRedirect("login.jsp?error=Please Login First");
+        return;
+    }
+%>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.bloodbank.utils.DatabaseConnection" %>
 <!DOCTYPE html>
@@ -13,7 +20,7 @@
         <div class="nav-links">
         <a href="home.jsp">Home</a>
                <a href="register.jsp">Register</a>
-            <a href="login.jsp">Logout</a>
+            <a href="LogoutServlet">Logout</a>
         </div>
     </div>
 

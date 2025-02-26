@@ -1,3 +1,10 @@
+<%
+    HttpSession sessionObj = request.getSession(false);
+    if (sessionObj == null || sessionObj.getAttribute("user") == null) {
+        response.sendRedirect("login.jsp?error=Please Login First");
+        return;
+    }
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -10,14 +17,13 @@
     <div class="header">
         <div class="logo">Blood Bank</div>
         <div class="nav-links">
-            <a href="donors.jsp">Donor List</a>
             <a href="register.jsp">Register</a>
-            <a href="login.jsp">Logout</a>
+            <a href="LogoutServlet">Logout</a>
         </div>
     </div>
 
     <!-- Welcome Text Outside the Box -->
-    <h2 class="welcome-text">Welcome to Blood Bank Management System</h2>
+    <h1 class="welcome-text">Welcome to Blood Bank Management System</h1>
 
     <div class="container">
         <div class="button-container">
