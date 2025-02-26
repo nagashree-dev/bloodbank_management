@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     HttpSession sessionObj = request.getSession(false);
     if (sessionObj == null || sessionObj.getAttribute("user") == null) {
@@ -5,14 +6,12 @@
         return;
     }
 %>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Donor Registration</title>
     <link rel="stylesheet" type="text/css" href="assets/css/register.css">
-     <script src="assets/js/register.js"></script>
+    <script src="assets/js/register.js"></script>
 </head>
 <body>
 
@@ -20,9 +19,9 @@
     <div class="header">
         <div class="logo">Blood Bank</div>
         <div class="nav-links">
-        <a href="home.jsp">Home</a>
+            <a href="home.jsp">Home</a>
             <a href="donors.jsp">Donor List</a>
-                     <a href="LogoutServlet">Logout</a>
+            <a href="LogoutServlet">Logout</a>
         </div>
     </div>
 
@@ -63,12 +62,11 @@
 
             <input type="submit" value="Register">
         </form>
-              <!-- Display error message if login fails -->
-                        <% String errorMessage = request.getParameter("error"); %>
-                        <% if (errorMessage != null) { %>
-                            <div class="error-message" style="color: red; text-align: center;"><%= errorMessage %></div>
-                        <% } %>
-            </div>
+
+        <% String errorMessage = request.getParameter("error"); %>
+        <% if (errorMessage != null) { %>
+            <div class="error-message"><%= errorMessage %></div>
+        <% } %>
     </div>
 
 </body>
