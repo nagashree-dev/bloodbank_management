@@ -23,7 +23,7 @@ public class DonorServlet extends HttpServlet {
 
         // Basic validation to prevent empty values
         if (name == null || name.trim().isEmpty() || bloodGroup == null || bloodGroup.trim().isEmpty()) {
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("donor.jsp");
             return;
         }
 
@@ -35,7 +35,7 @@ public class DonorServlet extends HttpServlet {
             stmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("donor.jsp");
             return;
         }
 

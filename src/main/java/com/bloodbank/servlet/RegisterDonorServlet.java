@@ -41,13 +41,13 @@ public class RegisterDonorServlet extends HttpServlet {
             conn.close();
 
             if (rows > 0) {
-                response.sendRedirect("success.jsp"); // Redirect to success page
+                response.sendRedirect("donors.jsp");
             } else {
-                response.sendRedirect("error.jsp"); // Redirect to error page
+                response.sendRedirect("register.jsp?error=Registration failed. Try again."); // Redirect to error page
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("register.jsp?error=Registration failed. Check with different Mobile Number and Try again.");
         }
     }
 }
