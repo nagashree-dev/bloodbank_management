@@ -1,0 +1,116 @@
+/* Reset default margin and ensure content fits well */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column; /* Allow header and form stacking */
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* ===== HEADER STYLING ===== */
+.header {
+    background-color: red;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Logo Styling */
+.logo {
+    font-size: 28px; /* Bigger logo */
+    font-weight: bold;
+    margin-right: 30px; /* Space between logo and links */
+    color: white;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Spacing between links */
+    align-items: center;
+}
+
+/* Styling links */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ===== FORM STYLING ===== */
+/* Container styling */
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Aligns form contents to the left */
+    width: 50%;
+    max-width: 600px;
+    margin-top: 80px; /* To avoid overlapping with header */
+}
+
+/* Form heading */
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center; /* Keep the heading centered */
+}
+
+/* Make form take full width */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Ensuring labels are properly aligned */
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+/* Ensuring all input fields and dropdowns are aligned */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Submit button styles */
+input[type="submit"] {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #cc0000;
+}
