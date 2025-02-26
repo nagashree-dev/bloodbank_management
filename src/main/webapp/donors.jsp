@@ -1,31 +1,45 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="com.bloodbank.utils.DatabaseConnection" %>
 <%
-    HttpSession sessionObj = request.getSession(false);
-    if (sessionObj == null || sessionObj.getAttribute("user") == null) {
+    if (session.getAttribute("user") == null) {
         response.sendRedirect("login.jsp?error=Please Login First");
         return;
     }
 %>
-<%@ page import="java.sql.*" %>
-<%@ page import="com.bloodbank.utils.DatabaseConnection" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Donor List</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/donor.css">
+    <link rel="stylesheet" href="assets/css/donor.css">
+   <script src="assets/js/donor.js"></script>
+
 </head>
 <body>
-    <!-- Header Section -->
     <div class="header">
         <div class="logo">Blood Bank</div>
         <div class="nav-links">
-        <a href="home.jsp">Home</a>
-               <a href="register.jsp">Register</a>
+            <a href="home.jsp">Home</a>
+            <a href="register.jsp">Register</a>
             <a href="LogoutServlet">Logout</a>
         </div>
     </div>
 
     <div class="container">
         <h2>Donor List</h2>
+
+        <label for="bloodGroup">Select Blood Group:</label>
+        <select id="bloodGroup" onchange="searchDonors()">
+            <option value="">All</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+
         <table>
             <tr>
                 <th>Sl No</th>
@@ -36,27 +50,30 @@
                 <th>Place</th>
                 <th>Last Donated Date</th>
             </tr>
-            <%
-                try (Connection conn = DatabaseConnection.getConnection()) {
-                    Statement stmt = conn.createStatement();
-                    ResultSet rs = stmt.executeQuery("SELECT * FROM donors");
-
-                    int serialNumber = 1; // For Sl No
-                    while (rs.next()) {
-            %>
-            <tr>
-                <td><%= serialNumber++ %></td>
-                <td><%= rs.getString("name") %></td>
-                <td><%= rs.getString("blood_group") %></td>
-                <td><%= rs.getString("phone") %></td>
-                <td><%= rs.getString("sex") %></td>
-                <td><%= rs.getString("place") %></td>
-                <td><%= rs.getString("last_donation_date") %></td>
-            </tr>
-            <%
+            <tbody id="donorTableBody">
+                <%
+                    try (Connection conn = DatabaseConnection.getConnection();
+                         Statement stmt = conn.createStatement();
+                         ResultSet rs = stmt.executeQuery("SELECT * FROM donors")) {
+                        int serialNumber = 1;
+                        while (rs.next()) {
+                %>
+                <tr>
+                    <td><%= serialNumber++ %></td>
+                    <td><%= rs.getString("name") %></td>
+                    <td><%= rs.getString("blood_group") %></td>
+                    <td><%= rs.getString("phone") %></td>
+                    <td><%= rs.getString("sex") %></td>
+                    <td><%= rs.getString("place") %></td>
+                    <td><%= rs.getString("last_donation_date") %></td>
+                </tr>
+                <%
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                }
-            %>
+                %>
+            </tbody>
         </table>
     </div>
 </body>
