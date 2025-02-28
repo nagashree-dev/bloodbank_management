@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Donor List</title>
+    <title>Donor Lists</title>
     <link rel="stylesheet" href="assets/css/donor.css">
    <script src="assets/js/donor.js"></script>
 
@@ -25,7 +25,7 @@
     </div>
 
     <div class="container">
-        <h2>Donor List</h2>
+        <h2>Blood Donor Lists</h2>
 
         <label for="bloodGroup">Select Blood Group:</label>
         <select id="bloodGroup" onchange="searchDonors()">
