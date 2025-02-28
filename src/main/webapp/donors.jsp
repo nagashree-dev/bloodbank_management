@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Donor Lists</title>
+    <title>Donor List</title>
     <link rel="stylesheet" href="assets/css/donor.css">
    <script src="assets/js/donor.js"></script>
 
