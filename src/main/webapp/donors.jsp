@@ -25,7 +25,7 @@
     </div>
 
     <div class="container">
-        <h2>Donor List</h2>
+        <h2>Blood Donor Lists</h2>
 
         <label for="bloodGroup">Select Blood Group:</label>
         <select id="bloodGroup" onchange="searchDonors()">
